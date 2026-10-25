@@ -1,0 +1,58 @@
+<!doctype html>
+<!-- catnet — by cole · github.com/yupthatscole -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0a12">
+<title>catnet. — sign in</title>
+<link rel="icon" href="/img/favicon.png">
+<link rel="stylesheet" href="/css/catnet.css">
+<link rel="stylesheet" href="/css/login.css">
+</head>
+<body class="login">
+<main class="gate">
+  <section class="stage" aria-live="polite">
+    <div id="tuft" class="tuft"></div>
+    <p id="say" class="bubble">tuft is guarding the portal.</p>
+  </section>
+
+  <h1 class="wordmark">catnet.</h1>
+  <p class="tag">the internet is overrated anyway</p>
+  <p id="motd" class="motd" hidden></p>
+
+  <div id="setup" class="setup" hidden>
+    <b>first boot.</b> nobody lives here yet. create the admin account using the
+    <i>portal key</i> (the old portal password from secrets.h).
+  </div>
+
+  <div class="seg tabs" role="tablist">
+    <button id="tabLogin" class="on" role="tab" aria-selected="true">log in</button>
+    <button id="tabJoin" role="tab" aria-selected="false">new account</button>
+  </div>
+
+  <form id="form" autocomplete="on" novalidate>
+    <label class="field"><span>username</span>
+      <input id="user" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="16" required>
+    </label>
+    <label class="field"><span>password</span>
+      <input id="pass" name="password" type="password" autocomplete="current-password" maxlength="64" required>
+    </label>
+    <label id="keyField" class="field" hidden><span>portal key</span>
+      <input id="key" name="key" type="password" autocomplete="off" maxlength="64">
+    </label>
+    <p id="joinHint" class="hint" hidden>names: 3–16 characters, a–z 0–9 _ -. passwords: at least 6.</p>
+    <p id="err" class="err" role="alert"></p>
+    <button id="go" class="btn wide" type="submit">enter catnet →</button>
+  </form>
+
+  <footer class="foot">
+    <span>powered by a very small computer. meow.</span>
+    <span>made by <b>cole</b> · <a href="https://github.com/yupthatscole" target="_blank" rel="noopener">github.com/yupthatscole</a></span>
+    <span class="faint">tip: bookmark <b>http://catnet.lan</b> or <b>192.168.4.1</b></span>
+  </footer>
+</main>
+<script src="/js/catnet.js"></script>
+<script src="/js/login.js"></script>
+</body>
+</html>

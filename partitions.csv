@@ -1,0 +1,17 @@
+# catnet partition table (4 MB flash, ESP32-WROOM-32)
+#
+#  app0      firmware (no OTA; a single large slot)
+#  userdata  LittleFS: accounts, chat, notes, board, uploads, game saves.
+#            NOT touched by "Upload Filesystem Image", so reflashing the web
+#            assets never wipes user data.
+#  spiffs    LittleFS: web assets built from web/ (this is the partition
+#            PlatformIO's uploadfs writes, because it is the last data
+#            partition of a filesystem subtype).
+#
+# Name,    Type, SubType,  Offset,   Size
+nvs,       data, nvs,      0x9000,   0x5000,
+otadata,   data, ota,      0xe000,   0x2000,
+app0,      app,  ota_0,    0x10000,  0x1B0000,
+userdata,  data, spiffs,   0x1C0000, 0x160000,
+spiffs,    data, spiffs,   0x320000, 0xD0000,
+coredump,  data, coredump, 0x3F0000, 0x10000,

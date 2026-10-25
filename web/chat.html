@@ -1,0 +1,36 @@
+<!doctype html>
+<!-- catnet — by cole · github.com/yupthatscole -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="theme-color" content="#0d0a12">
+<title>chat — catnet.</title>
+<link rel="icon" href="/img/favicon.png">
+<link rel="stylesheet" href="/css/catnet.css">
+<link rel="stylesheet" href="/css/apps.css">
+</head>
+<body class="chatpage">
+<main class="chat" id="main">
+  <div class="chat-head">
+    <h2>chat</h2>
+    <span class="mono faint" id="hereCount"></span>
+    <div class="here" id="here"></div>
+    <button class="iconbtn" id="modBtn" title="moderation" aria-label="moderation tools" hidden></button>
+  </div>
+  <div class="log" id="log" role="log" aria-live="polite" aria-label="chat messages">
+    <div class="loading"><div class="tuft"></div>fetching the conversation…</div>
+  </div>
+  <div class="typing" id="typing" aria-live="polite"></div>
+  <form class="composer" id="composer">
+    <label class="grow" style="position:relative">
+      <span class="sr" hidden>message</span>
+      <textarea id="text" rows="1" maxlength="400" placeholder="say something… (/me waves)" aria-label="message" enterkeyhint="send"></textarea>
+    </label>
+    <button class="btn" id="send" type="submit" aria-label="send"></button>
+  </form>
+</main>
+<script src="/js/catnet.js"></script>
+<script src="/js/chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<!-- catnet — by cole · github.com/yupthatscole -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0a12">
+<title>admin — catnet.</title>
+<link rel="icon" href="/img/favicon.png">
+<link rel="stylesheet" href="/css/catnet.css">
+<link rel="stylesheet" href="/css/apps.css">
+</head>
+<body>
+<main class="wrap" id="main">
+  <header class="phead"><div class="grow"><h1>admin</h1><p>keys to the house. changes here affect everyone.</p></div></header>
+
+  <section>
+    <div class="sec">people</div>
+    <div id="users"><div class="loading"><div class="tuft"></div>loading residents…</div></div>
+  </section>
+
+  <section>
+    <div class="sec">announcements</div>
+    <form id="annForm" class="row-flex">
+      <input type="text" id="annText" maxlength="200" placeholder="tell everyone something…" class="grow" aria-label="announcement">
+      <label class="check" style="margin:0"><input type="checkbox" id="annImp"> important</label>
+      <button class="btn" type="submit">post</button>
+    </form>
+    <div class="list" id="annList" style="margin-top:10px"></div>
+  </section>
+
+  <section>
+    <div class="sec">access</div>
+    <form id="keyForm" class="row-flex">
+      <label class="field grow" style="margin:0"><span>new portal key (needed to create accounts)</span><input type="password" id="newKey" minlength="4" maxlength="64" autocomplete="new-password"></label>
+      <button class="btn ghost" type="submit">change key</button>
+    </form>
+    <label class="check"><input type="checkbox" id="cfgOpen"> open sign-up (anyone on the wi-fi can create an account without the portal key)</label>
+    <label class="field"><span>login screen message</span><input type="text" id="cfgMotd" maxlength="120" placeholder="e.g. game night friday!"></label>
+    <p><button class="btn ghost" id="saveAccess">save access settings</button></p>
+  </section>
+
+  <section>
+    <div class="sec">wi-fi</div>
+    <p class="hint">saving wi-fi changes restarts catnet. everyone reconnects (with the new password, if you changed it).</p>
+    <form id="wifiForm" class="stack">
+      <label class="field"><span>network name</span><input type="text" id="cfgSsid" maxlength="31" required></label>
+      <label class="field"><span>new wi-fi password (leave blank to keep)</span><input type="password" id="cfgPass" minlength="8" maxlength="63" autocomplete="new-password"></label>
+      <label class="field"><span>channel</span><select id="cfgCh"></select></label>
+      <label class="check"><input type="checkbox" id="cfgCaptive"> captive portal (phones auto-open catnet when they join)</label>
+      <label class="check"><input type="checkbox" id="cfgLow"> battery saver radio (shorter range, longer power-bank life)</label>
+      <button class="btn" type="submit">save &amp; restart wi-fi</button>
+    </form>
+  </section>
+
+  <section>
+    <div class="sec">maintenance</div>
+    <div class="list">
+      <a class="item" href="/system"><span class="grow"><span class="t">event log &amp; vital signs</span></span><span class="go">→</span></a>
+      <a class="item" href="/chat"><span class="grow"><span class="t">chat moderation</span><div class="meta">delete messages, mute, sweep — use the tools in chat</div></span><span class="go">→</span></a>
+      <button class="item" id="restart"><span class="grow"><span class="t warn">restart catnet</span><div class="meta">everyone is logged out; data is kept</div></span><span class="go">→</span></button>
+    </div>
+  </section>
+</main>
+<script src="/js/catnet.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

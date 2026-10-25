@@ -1,0 +1,48 @@
+<!doctype html>
+<!-- catnet — by cole · github.com/yupthatscole -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0a12">
+<title>board — catnet.</title>
+<link rel="icon" href="/img/favicon.png">
+<link rel="stylesheet" href="/css/catnet.css">
+<link rel="stylesheet" href="/css/apps.css">
+</head>
+<body>
+<main class="wrap" id="main">
+  <section id="listView">
+    <header class="phead">
+      <div class="grow"><h1>board</h1><p>slow conversations. things that should stick around longer than chat.</p></div>
+      <button class="btn" id="newBtn">write a post</button>
+    </header>
+    <div class="list" id="posts" style="margin-top:16px"><div class="loading"><div class="tuft"></div>reading the corkboard…</div></div>
+  </section>
+
+  <section id="threadView" hidden>
+    <div style="padding-top:18px"><a href="/board" id="backLink">← all posts</a></div>
+    <article id="thread"></article>
+    <div class="sec">replies <span class="count" id="rcount"></span></div>
+    <div id="replies"></div>
+    <form id="replyForm" class="frame" style="margin-top:18px">
+      <span class="label">reply</span>
+      <textarea id="replyText" rows="3" maxlength="400" placeholder="add to the conversation…" aria-label="reply"></textarea>
+      <div class="row-flex" style="margin-top:8px"><span class="hint grow" id="rchars">0 / 400</span><button class="btn" type="submit">reply</button></div>
+    </form>
+  </section>
+
+  <section id="composeView" hidden>
+    <div style="padding-top:18px"><a href="/board">← cancel</a></div>
+    <form id="postForm" class="stack" style="margin-top:14px">
+      <h2>new post</h2>
+      <label class="field"><span>title</span><input type="text" id="ptitle" maxlength="60" required></label>
+      <label class="field"><span>body</span><textarea id="pbody" rows="8" maxlength="1000"></textarea></label>
+      <div class="row-flex"><span class="hint grow" id="pchars">0 / 1000</span><button class="btn" type="submit">pin it to the board</button></div>
+    </form>
+  </section>
+</main>
+<script src="/js/catnet.js"></script>
+<script src="/js/board.js"></script>
+</body>
+</html>

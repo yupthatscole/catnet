@@ -1,0 +1,52 @@
+<!doctype html>
+<!-- catnet — by cole · github.com/yupthatscole -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0a12">
+<title>catnet.</title>
+<link rel="icon" href="/img/favicon.png">
+<link rel="stylesheet" href="/css/catnet.css">
+<link rel="stylesheet" href="/css/apps.css">
+</head>
+<body>
+<main class="wrap" id="main">
+  <section class="hello">
+    <div class="hello-text">
+      <h1 id="greet">hello.</h1>
+      <p id="status" class="status mono">connecting…</p>
+    </div>
+    <div class="pet-lane" id="lane" aria-label="Tuft, catnet's cat, wandering around"></div>
+  </section>
+
+  <section id="annBox" hidden>
+    <div class="sec">notices</div>
+    <div id="ann" class="stack"></div>
+  </section>
+
+  <section>
+    <div class="sec">places</div>
+    <nav class="list" id="places" aria-label="catnet apps"></nav>
+  </section>
+
+  <section class="two">
+    <div>
+      <div class="sec">around <span class="count" id="onCount"></span></div>
+      <div id="around" class="around"></div>
+    </div>
+    <div>
+      <div class="sec">storage</div>
+      <div id="storage"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec">latest on the board <a href="/board">all posts →</a></div>
+    <div class="list" id="latest"><div class="skel"></div><div class="skel"></div></div>
+  </section>
+</main>
+<script src="/js/catnet.js"></script>
+<script src="/js/home.js"></script>
+</body>
+</html>

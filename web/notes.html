@@ -1,0 +1,39 @@
+<!doctype html>
+<!-- catnet — by cole · github.com/yupthatscole -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0a12">
+<title>notes — catnet.</title>
+<link rel="icon" href="/img/favicon.png">
+<link rel="stylesheet" href="/css/catnet.css">
+<link rel="stylesheet" href="/css/apps.css">
+</head>
+<body>
+<main class="wrap" id="main">
+  <section id="listView">
+    <header class="phead">
+      <div class="grow"><h1>notes</h1><p>private scraps of paper. only you can read these.</p></div>
+      <button class="btn" id="newBtn">new note</button>
+    </header>
+    <input type="text" id="q" placeholder="search your notes…" aria-label="search notes" style="margin:14px 0">
+    <div class="notes-grid" id="grid"><div class="loading"><div class="tuft"></div>shuffling papers…</div></div>
+  </section>
+
+  <section id="editView" class="editor" hidden>
+    <div class="row-flex" style="padding-top:18px">
+      <button class="btn ghost small" id="backBtn">← all notes</button>
+      <span class="saved grow" id="saved"></span>
+      <label class="check" style="margin:0"><input type="checkbox" id="pin"> pin</label>
+      <button class="iconbtn" id="delBtn" title="delete note" aria-label="delete note"></button>
+    </div>
+    <input class="title" type="text" id="title" placeholder="untitled" maxlength="60" aria-label="note title">
+    <textarea id="body" placeholder="write anything…" aria-label="note text"></textarea>
+    <div class="hint"><span id="chars">0</span> / 6000 · saves automatically</div>
+  </section>
+</main>
+<script src="/js/catnet.js"></script>
+<script src="/js/notes.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<!-- catnet — by cole · github.com/yupthatscole -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0a12">
+<title>settings — catnet.</title>
+<link rel="icon" href="/img/favicon.png">
+<link rel="stylesheet" href="/css/catnet.css">
+<link rel="stylesheet" href="/css/apps.css">
+</head>
+<body>
+<main class="wrap" id="main">
+  <header class="phead">
+    <div id="meAv"></div>
+    <div class="grow"><h1>settings</h1><p id="who"></p></div>
+  </header>
+
+  <div id="mustBox" class="note-card important" hidden style="margin-top:14px">
+    an admin reset your password. please choose a new one before you continue.
+  </div>
+
+  <section id="profileSec">
+    <div class="sec">your coat</div>
+    <div class="coats" id="coats"></div>
+
+    <div class="sec">name colour</div>
+    <div class="swatches" id="swatches"></div>
+    <p class="hint">how your name shows up in chat: <span class="preview-name" id="namePreview"></span></p>
+
+    <label class="field"><span>status (40 chars)</span><input type="text" id="status" maxlength="40" placeholder="napping, probably"></label>
+    <label class="field"><span>bio (160 chars)</span><textarea id="bio" rows="3" maxlength="160" placeholder="a few words about you"></textarea></label>
+    <p><button class="btn" id="saveProfile">save profile</button></p>
+  </section>
+
+  <section id="lookSec">
+    <div class="sec">look &amp; feel</div>
+    <div class="swatches" id="accents" aria-label="accent colour"></div>
+    <label class="check"><input type="checkbox" id="pMotion"> reduce motion (no page animations, Tuft holds still)</label>
+    <label class="check"><input type="checkbox" id="pCompact"> compact layout</label>
+    <label class="check"><input type="checkbox" id="pPet"> hide the wandering Tuft on the home page</label>
+    <label class="check"><input type="checkbox" id="pSound"> mute catnet sounds (chat blips, game audio)</label>
+  </section>
+
+  <section>
+    <div class="sec">password</div>
+    <form id="pwForm" class="stack" autocomplete="on">
+      <input type="text" autocomplete="username" id="pwUser" hidden>
+      <label class="field"><span>current password</span><input type="password" id="pwOld" autocomplete="current-password" required></label>
+      <label class="field"><span>new password (6+ characters)</span><input type="password" id="pwNew" autocomplete="new-password" minlength="6" maxlength="64" required></label>
+      <label class="field"><span>new password again</span><input type="password" id="pwNew2" autocomplete="new-password" required></label>
+      <p class="err" id="pwErr"></p>
+      <button class="btn" type="submit">change password</button>
+    </form>
+  </section>
+
+  <section id="moreSec">
+    <div class="sec">devices &amp; data</div>
+    <div class="list">
+      <button class="item" id="revoke">{icon}<span class="grow"><span class="t">sign out everywhere else</span><div class="meta">ends your sessions on other phones and laptops</div></span><span class="go">→</span></button>
+      <button class="item" id="resetSaves"><span class="grow"><span class="t">reset game progress</span><div class="meta">wipe your saved DENIED., SIGNAL or nine lives runs</div></span><span class="go">→</span></button>
+      <a class="item" id="profileLink" href="/people"><span class="grow"><span class="t">see your public profile</span></span><span class="go">→</span></a>
+      <button class="item" id="logout"><span class="grow"><span class="t bad">log out</span></span><span class="go">→</span></button>
+    </div>
+  </section>
+</main>
+<script src="/js/catnet.js"></script>
+<script src="/js/settings.js"></script>
+</body>
+</html>

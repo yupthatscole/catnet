@@ -1,0 +1,97 @@
+/* catnet — by cole (github.com/yupthatscole) */
+body.nl {
+  --n-bg: #140f1f; --n-wall: #1e1630; --n-floor: #2b1f3d; --n-rug: #3a2450; --n-card: #241a35; --n-card2: #2e2244; --n-edge: #45365e;
+  --n-text: #f0e8ff; --n-dim: #a898c4; --n-lamp: #ffd88a; --n-hurt: #ff7a8a; --n-good: #9ff0c0; --n-block: #8fc7ff; --n-die: #f4efff; --n-pip: #2e1660;
+  background: var(--n-bg); color: var(--n-text); padding: 0; min-height: 100dvh; font: 15px/1.45 var(--sans);
+}
+.nl-app { max-width: 720px; margin: 0 auto; padding: 12px 14px calc(18px + env(safe-area-inset-bottom)); }
+.nl-boot { text-align: center; color: var(--n-dim); margin-top: 30vh; }
+.nl button { font: inherit; cursor: pointer; }
+.nl-title { font: 40px/1.1 var(--pix); color: var(--n-lamp); margin: 18px 0 2px; }
+.nl-sub { color: var(--n-dim); }
+.nl-btn { display: block; width: 100%; margin-top: 10px; padding: 13px 16px; text-align: left; background: var(--n-card2); color: var(--n-text); border: 0; border-radius: 4px; box-shadow: inset 0 -3px 0 #0005; }
+.nl-btn:hover { background: #382a52; }
+.nl-btn.primary { background: var(--n-lamp); color: #2a1d05; font-weight: 700; }
+.nl-btn small { display: block; opacity: .75; font-weight: 400; }
+.nl-btn[disabled] { opacity: .4; cursor: default; }
+.nl-coats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
+.nl-coat { background: var(--n-card); border: 2px solid var(--n-edge); border-radius: 6px; padding: 10px 6px; color: var(--n-text); display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; font-size: 12px; }
+.nl-coat.on { border-color: var(--n-lamp); background: #2f2340; }
+.nl-coat[disabled] { opacity: .45; }
+.nl-coat b { font: 20px var(--pix); }
+.nl-coat .tuft { --s: .8; }
+
+.nl-hud { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.nl-hud .room { font: 20px var(--pix); color: var(--n-lamp); }
+.nl-track { display: flex; gap: 4px; align-items: center; }
+.nl-track span { width: 18px; height: 18px; display: grid; place-items: center; font-size: 10px; background: var(--n-card); color: var(--n-dim); border-radius: 3px; }
+.nl-track span.done { background: #3a2c55; color: var(--n-good); }
+.nl-track span.here { background: var(--n-lamp); color: #2a1d05; }
+.nl-hud .menu { margin-left: auto; background: none; border: 1px solid var(--n-edge); color: var(--n-dim); padding: 4px 10px; border-radius: 4px; }
+.nl-hearts { display: flex; gap: 3px; flex-wrap: wrap; margin: 8px 0 4px; }
+.nl-heart { width: 22px; height: 20px; image-rendering: pixelated; }
+.nl-hearts.flash { animation: hurtflash .4s steps(2) 2; }
+@keyframes hurtflash { 50% { filter: brightness(2) saturate(0); } }
+
+.nl-arena {
+  position: relative; display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 8px; min-height: 210px; padding: 14px 10px 0;
+  background: linear-gradient(var(--n-wall) 0 62%, var(--n-floor) 62%); border-radius: 6px; overflow: hidden; margin-top: 6px;
+}
+.nl-arena::before { content: ""; position: absolute; left: 6%; right: 6%; bottom: 10px; height: 26px; background: var(--n-rug); border-radius: 50%; box-shadow: 0 0 0 4px #4a2e66 inset; }
+.nl-arena::after { content: ""; position: absolute; right: 8%; top: 14px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(255, 216, 138, .18), transparent 70%); pointer-events: none; }
+.nl-side { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; padding-bottom: 14px; }
+.nl-side .tuft { --s: 1.4; }
+.nl-enemy { width: 112px; height: 112px; image-rendering: pixelated; }
+.nl-hp { width: 120px; height: 9px; background: #0d0915; border: 1px solid var(--n-edge); position: relative; }
+.nl-hp i { position: absolute; inset: 0 auto 0 0; background: var(--n-hurt); transition: width .3s; }
+.nl-name { font: 10px/1 var(--pix); letter-spacing: 0; color: var(--n-text); font-size: 10px; }
+.nl-intent {
+  position: absolute; top: 4px; right: 4px; z-index: 2; background: var(--n-text); color: #241a35; font-size: 12px; padding: 5px 8px; max-width: 170px; border-radius: 3px;
+  box-shadow: 2px 2px 0 #0007;
+}
+.nl-intent b { font-weight: 800; }
+.nl-badge { position: absolute; z-index: 2; font-size: 12px; font-weight: 800; padding: 2px 6px; border-radius: 3px; }
+.nl-badge.block { background: var(--n-block); color: #0b223a; }
+.nl-float { position: absolute; z-index: 5; font: 20px var(--pix); pointer-events: none; animation: floatup .9s ease forwards; text-shadow: 2px 2px 0 #000; }
+@keyframes floatup { to { transform: translateY(-40px); opacity: 0; } }
+.nl-shake { animation: nlshake .3s steps(4); }
+@keyframes nlshake { 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-3px); } }
+.nl-flash { animation: nlflash .25s steps(2) 2; }
+@keyframes nlflash { 50% { filter: brightness(3) saturate(0); } }
+.nl-log { min-height: 22px; font-size: 13px; color: var(--n-dim); margin: 8px 0 2px; }
+
+.nl-dice { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0; min-height: 58px; align-items: center; }
+.nl-die {
+  width: 54px; height: 54px; background: var(--n-die); border: 0; border-radius: 8px; position: relative; padding: 0;
+  box-shadow: inset 0 -5px 0 #c9bde6, 0 3px 0 #0007; transition: transform .12s;
+}
+.nl-die i { position: absolute; width: 9px; height: 9px; background: var(--n-pip); border-radius: 2px; }
+.nl-die.sel { transform: translateY(-6px); box-shadow: inset 0 -5px 0 #c9bde6, 0 0 0 3px var(--n-lamp), 0 8px 0 #0007; }
+.nl-die.rolling { animation: dieroll .3s steps(3); }
+@keyframes dieroll { 33% { transform: rotate(-14deg) translateY(-4px); } 66% { transform: rotate(10deg); } }
+.nl-dice .none { color: var(--n-dim); font-size: 13px; }
+
+.nl-kit { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+@media (min-width: 600px) { .nl-kit { grid-template-columns: 1fr 1fr 1fr; } }
+.nl-card { text-align: left; background: var(--n-card); border: 2px solid var(--n-edge); border-radius: 6px; color: var(--n-text); padding: 9px 10px; min-height: 76px; position: relative; }
+.nl-card .nm { font: 20px/1 var(--pix); display: block; margin-bottom: 4px; }
+.nl-card .nm sup { font-size: 10px; color: var(--n-lamp); }
+.nl-card .cond { position: absolute; top: 8px; right: 8px; background: #3a2c55; color: var(--n-lamp); font: 11px/1 var(--mono); padding: 4px 6px; border-radius: 3px; }
+.nl-card .tx { font-size: 12.5px; color: var(--n-dim); }
+.nl-card.ok { border-color: var(--n-lamp); background: #30243f; }
+.nl-card.used { opacity: .35; }
+.nl-card.locked { opacity: .45; border-style: dashed; }
+.nl-card.locked::after { content: "locked this turn"; position: absolute; bottom: 6px; right: 8px; font-size: 10px; color: var(--n-hurt); }
+.nl-card.waiting { border-color: var(--n-good); }
+.nl-end { margin-top: 12px; display: flex; gap: 8px; }
+.nl-end .nl-btn { margin: 0; text-align: center; }
+
+.nl-pick { display: grid; gap: 10px; margin-top: 14px; }
+.nl-pick .nl-card { min-height: 64px; }
+.gk-lb { width: 100%; border-collapse: collapse; margin-top: 6px; }
+.gk-lb td { padding: 5px 4px; border-bottom: 1px dotted var(--n-edge); }
+.gk-lb td.r { text-align: right; color: var(--n-lamp); }
+.gk-lb tr.me td { color: var(--n-good); }
+.gk-dim { color: var(--n-dim); }
+.nl-banner { text-align: center; padding: 26px 0 10px; }
+.nl-banner h2 { font: 30px var(--pix); color: var(--n-hurt); }

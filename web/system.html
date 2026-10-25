@@ -1,0 +1,28 @@
+<!doctype html>
+<!-- catnet — by cole · github.com/yupthatscole -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0a12">
+<title>system — catnet.</title>
+<link rel="icon" href="/img/favicon.png">
+<link rel="stylesheet" href="/css/catnet.css">
+<link rel="stylesheet" href="/css/apps.css">
+</head>
+<body>
+<main class="wrap" id="main">
+  <header class="phead">
+    <div id="tuftBox"></div>
+    <div class="grow"><h1>system</h1><p id="verdict">checking vital signs…</p></div>
+  </header>
+  <section><div class="sec">gauges</div><div class="gauges" id="gauges"></div></section>
+  <section><div class="sec">network</div><table class="kv" id="net"></table></section>
+  <section><div class="sec">hardware</div><table class="kv" id="hw"></table></section>
+  <section id="staSec" hidden><div class="sec">devices on the wi-fi</div><table class="kv" id="sta"></table></section>
+  <section id="evSec" hidden><div class="sec">event log</div><div class="events frame tight" id="events"></div></section>
+</main>
+<script src="/js/catnet.js"></script>
+<script src="/js/system.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+/* catnet — by cole (github.com/yupthatscole) */
+body.login { padding: 0; display: grid; place-items: center; min-height: 100vh; min-height: 100dvh; }
+.gate { width: 100%; max-width: 380px; padding: 28px 20px calc(28px + env(safe-area-inset-bottom)); }
+.stage {
+  position: relative; height: 170px; display: flex; align-items: flex-end; justify-content: flex-start; padding-left: 4px;
+  border-bottom: 2px solid var(--line2); margin-bottom: 22px;
+}
+.stage::after { content: ""; position: absolute; left: 0; right: 0; bottom: -7px; height: 4px; background: repeating-linear-gradient(90deg, var(--line) 0 4px, transparent 4px 12px); }
+.stage .tuft { --s: 2; margin-bottom: -2px; }
+.stage .bubble {
+  position: absolute; top: 18px; left: 178px; right: 0; max-width: 200px; width: max-content; font-size: 13px;
+}
+.stage .bubble::before { content: ""; position: absolute; left: -8px; top: 14px; border: 4px solid transparent; border-right-color: var(--text); }
+.wordmark { font-size: 40px; color: var(--accent); }
+.tag { color: var(--dim); margin: 4px 0 14px; }
+.motd { font-family: var(--mono); font-size: 12.5px; color: var(--warn); border-left: 2px solid var(--warn); padding-left: 10px; }
+.setup { background: var(--accent-soft); border: 1px dashed var(--accent-2); padding: 12px; font-size: 14px; margin: 12px 0; }
+.tabs { width: 100%; margin: 6px 0 4px; }
+.tabs button { flex: 1; }
+#go { margin-top: 6px; }
+.foot { display: flex; flex-direction: column; gap: 4px; margin-top: 26px; font-size: 12px; color: var(--dim); }
+.shake { animation: shake .36s steps(6); }
+@keyframes shake { 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }

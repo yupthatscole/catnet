@@ -1,0 +1,64 @@
+<!doctype html>
+<!-- catnet — by cole · github.com/yupthatscole -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0a12">
+<title>about — catnet.</title>
+<link rel="icon" href="/img/favicon.png">
+<link rel="stylesheet" href="/css/catnet.css">
+<link rel="stylesheet" href="/css/apps.css">
+</head>
+<body>
+<main class="wrap prose" id="main">
+  <header class="phead"><div class="grow"><h1>about catnet.</h1><p id="ver">a very small internet.</p></div></header>
+
+  <section>
+    <p>catnet is a complete little internet that lives on one ESP32 microcontroller and a USB power bank.
+      there is no connection to the outside world — everything here (chat, files, the arcade, these words) is
+      served from a chip with about 520 KB of memory and 4 MB of flash.</p>
+    <p>join the wi-fi, open <code>http://catnet.lan</code> or <code>192.168.4.1</code>, and you're in.</p>
+  </section>
+
+  <section>
+    <h2>meet tuft</h2>
+    <p>tuft is catnet's resident cat and, technically, the entire IT department. every animation comes from one
+      320×576 sprite sheet: four frames, eight moods.</p>
+    <div class="sheetrow" id="moods"></div>
+  </section>
+
+  <section>
+    <h2>what's here</h2>
+    <ul>
+      <li><b>chat</b> — the living room. live-ish (it checks every second and a half).</li>
+      <li><b>board</b> — slower conversations that stick around.</li>
+      <li><b>files</b> — share things; public files double as your homepage at <code>/~yourname/</code>.</li>
+      <li><b>notes</b> — private notes, only you can read them.</li>
+      <li><b>arcade</b> — DENIED., SIGNAL and nine lives. games run in your browser; saves and high scores live on catnet.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>honest security notes</h2>
+    <p>catnet takes security seriously for a cat, but a microcontroller is not a bank:</p>
+    <ul>
+      <li>the wi-fi uses WPA2, but the web pages use plain <b>http</b>. anyone who knows the wi-fi password can, with effort, sniff traffic on the air. don't reuse an important password here.</li>
+      <li>passwords are stored salted and hashed (PBKDF2-SHA256), sessions use random 128-bit tokens bound to your device's address, and every change needs a per-session anti-forgery token.</li>
+      <li><b>public</b> files can be opened by anyone on the wi-fi. <b>private</b> files are visible to you and to admins.</li>
+      <li>admins can read the event log and moderate chat, the board and files.</li>
+      <li>game scores are reported by your browser, so a determined cheater can cheat. it's a cat arcade.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>credits</h2>
+    <p>catnet was made by <b>cole</b> — <a href="https://github.com/yupthatscole" target="_blank" rel="noopener">github.com/yupthatscole</a>.</p>
+    <p>catnet firmware, pages, the tuftpix typeface and the games were made for this one device.
+      no frameworks, no trackers, no fonts from the internet — there is no internet.</p>
+  </section>
+</main>
+<script src="/js/catnet.js"></script>
+<script src="/js/about.js"></script>
+</body>
+</html>
